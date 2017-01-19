@@ -9,6 +9,7 @@ With **natural-script**, describe the request you want with english words and th
 ```javascript
 hello
 how are you
+what time is it in {{capital_city}}
 my appointment is planned for {{date:date1}}
 ```
 
@@ -95,6 +96,22 @@ ns.parse('I left him 5 days ago', 'I left him {{date|var1}}');
 // return { var1: { text:'<real information parsed>', ref:'<interpretated information parsed>', ... } }
 // look chrono-node documentation for more details on the returned object
 ```
+
+#### Capital city
+
+You can also extract city name. The exact list is in [src/formats/capital-city.js](src/formats/capital-city.js).
+
+```javascript
+ns.parse('Paris', '{{capital_city}}');
+ns.parse('paris', '{{capital_city}}'); // lowercase also works
+ns.parse('What time is it in London ?', 'what time is it in {{capital_city}}');
+// return true
+
+
+ns.parse('What time is it in London ?', 'what time is it in {{capital_city|city}}');
+// returns { city: 'London' }
+```
+
 
 #### Customized information type
 

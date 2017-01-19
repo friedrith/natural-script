@@ -28,7 +28,8 @@ function concat(block1, block2) {
 }
 
 var format = {
-    date: require('./formats/date')
+    date: require('./formats/date'),
+    capital_city: require('./formats/capital-city')
 };
 
 function parse(sentence, expression) {
@@ -92,6 +93,7 @@ function parseAux(sentence, expression) {
             varType = currentFormat;
         }
 
+        // console.log(varType);
         if (format[varType]) {
             var partialResult = format[varType](sentence, varName);
             // console.log(partialResult);
