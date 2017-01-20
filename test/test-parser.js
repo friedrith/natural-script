@@ -70,4 +70,29 @@ describe('parse', function () {
         });
     });
 
+    describe('2 words + city', function () {
+
+        cities.forEach(function (city) {
+            var s = 'testaaa testbbbb '+city;
+            var ref = 'testaaa testbbbb {{capital_city}}';
+            it('"'+s+'" -> "'+ref+'" should return true', function () {
+                // console.log(ns.parse(s, ref));
+                expect(ns.parse(s, ref)).to.be.true;
+            });
+        });
+    });
+
+    describe('2 words + date + city', function () {
+        dates.forEach(function (date) {
+            cities.forEach(function (city) {
+                var s = 'testaaa testbbbb '+date+' '+city;
+                var ref = 'testaaa testbbbb {{date}} {{capital_city}}';
+                it('"'+s+'" -> "'+ref+'" should return true', function () {
+                    // console.log(ns.parse(s, ref));
+                    expect(ns.parse(s, ref)).to.be.true;
+                });
+            });
+        });
+    });
+
 });
