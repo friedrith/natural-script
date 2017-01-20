@@ -85,8 +85,7 @@ ns.parse('<user input>', '{{<information type>:variableName}}');
 
 #### Date
 
-The first kind of information you can extract is **date**. It uses the module [chrono-node](https://github.com/wanasit/chrono) to parse the date. See the [documentation](http://wanasit.github.io/pages/chrono/) to discover all date and time formats managed.
-
+The first kind of information you can extract is **date**.
 ```javascript
 ns.parse('today', '{{date}}');
 ns.parse('5 days ago', '{{date}}');
@@ -99,9 +98,13 @@ ns.parse('I left him 5 days ago', 'I left him {{date:var1}}');
 // look chrono-node documentation for more details on the returned object
 ```
 
+It uses the module [chrono-node](https://github.com/wanasit/chrono) to parse the date.
+See the [documentation](http://wanasit.github.io/pages/chrono/) to discover all date and time formats managed.
+
+
 #### Capital city
 
-You can also extract city names. The exact list is in [src/formats/capital-city.js](src/formats/capital-city.js).
+You can also extract city names.
 
 ```javascript
 ns.parse('Paris', '{{capital_city}}');
@@ -122,7 +125,8 @@ ns.parse('What time is it in London ?', 'what time is it {{capital_city:city}}')
 
 ```
 
-See the managed prepositions in file [src/prepositions.js](src/prepositions.js).
+The list of available cities is [here](src/formats/capital-city.js) and the list
+of managed prepositions is [here](src/prepositions.js).
 
 
 #### Customized information type
