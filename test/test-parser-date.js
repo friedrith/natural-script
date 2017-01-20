@@ -2,7 +2,7 @@ const chai = require('chai');
 const should = chai.should;
 const expect = chai.expect;
 
-const dates = require('./config');
+const dates = require('./config').dates;
 
 const ns = require('../src/parser');
 

@@ -1,33 +1,36 @@
 var cities = [];
 
+const prepositionParser = require('../preposition');
 
 function lowercaseFirstLetter(string) {
     return string.charAt(0).toLowerCase() + string.slice(1);
 }
 
-
 module.exports = function (sentence, varName) {
+    if (!sentence || typeof sentence !== 'string') {
+        return false;
+    }
+
+    // console.log(sentence);
+    var prep = prepositionParser(sentence);
+    if (prep) {
+        sentence = prep.left;
+    }
+    // console.log(sentence, prep);
+
     // console.log('capital -city');
     for (var i = 0 ; i < cities.length ; i++) {
-        if (sentence.indexOf(cities[i]) == 0 ) {
-            var left = sentence.replace(cities[i], '');
+        if (sentence.toLowerCase().indexOf(cities[i].toLowerCase()) == 0 ) {
+            var left = sentence.slice(cities[i].length);
             var result = {
                 left: left,
                 vars: {}
             };
             if (varName) {
-                result.vars[varName] = cities[i];
-            }
-            // console.log(result);
-            return result;
-        } else if (sentence.indexOf(lowercaseFirstLetter(cities[i])) == 0) {
-            var left = sentence.replace(lowercaseFirstLetter(cities[i]), '');
-            var result = {
-                left: left,
-                vars: {}
-            };
-            if (varName) {
-                result.vars[varName] = cities[i];
+                result.vars[varName] = {text: cities[i]};
+                if (prep) {
+                    result.vars[varName].preposition = prep.preposition;
+                }
             }
             // console.log(result);
             return result;

@@ -33,10 +33,10 @@ ns.parse('Hello', 'hello');
 ns.parse('Bonjour', 'hello');
 // returns false
 
-ns.parse('What time is it in London ?', 'what time is it {{place}}');
+ns.parse('What time is it in London ?', 'what time is it in {{capital_city}}');
 // returns true
 
-ns.parse('What time is it in London ?', 'what time is it {{place:var1}}');
+ns.parse('What time is it in London ?', 'what time is it in {{capital_city:var1}}');
 // returns { var1: 'London' }
 
 ```
@@ -77,7 +77,8 @@ ns.parse('<user input>', '{{<information type>}}');
 You can also ask to store the information in a variable
 ```javascript
 ns.parse('<user input>', '{{<information type>|variableName}}');
-// return {variableName:<object>} if the user input is of the requested type. The object format depends of the information type.
+// return {variableName:<object>} if the user input is of the requested type.
+// The object format depends of the information type.
 // return false else
 ```
 
@@ -99,18 +100,28 @@ ns.parse('I left him 5 days ago', 'I left him {{date|var1}}');
 
 #### Capital city
 
-You can also extract city name. The exact list is in [src/formats/capital-city.js](src/formats/capital-city.js).
+You can also extract city names. The exact list is in [src/formats/capital-city.js](src/formats/capital-city.js).
 
 ```javascript
 ns.parse('Paris', '{{capital_city}}');
 ns.parse('paris', '{{capital_city}}'); // lowercase also works
+ns.parse('in Paris', '{{capital_city}}'); // it also catch prepositions about
+                                          // locations like to, in, from, etc
 ns.parse('What time is it in London ?', 'what time is it in {{capital_city}}');
 // return true
 
+ns.parse('Where is my home ?', 'where is my {{capital_city|city}}'); // home is not a city
+// return false
 
 ns.parse('What time is it in London ?', 'what time is it in {{capital_city|city}}');
-// returns { city: 'London' }
+// returns { city: { text: 'London' } }
+
+ns.parse('What time is it in London ?', 'what time is it {{capital_city|city}}');
+// returns { city: { text: 'London', preposition: 'in' } }
+
 ```
+
+See the managed prepositions in file [src/prepositions.js](src/prepositions.js).
 
 
 #### Customized information type

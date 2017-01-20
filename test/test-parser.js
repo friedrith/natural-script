@@ -2,13 +2,13 @@ const chai = require('chai');
 const should = chai.should;
 const expect = chai.expect;
 
-const dates = require('./config');
+const {dates, cities} = require('./config');
 
 const ns = require('../src/parser');
 // ns.parse('wake me up at 3pm everyday', 'wake me up [date:date1]')
 
 describe('parse', function () {
-    
+
     describe('empty', function () {
         it('should return true', function () {
             expect(ns.parse('','')).to.be.true;
@@ -69,4 +69,5 @@ describe('parse', function () {
             });
         });
     });
+
 });
