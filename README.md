@@ -92,8 +92,8 @@ ns.parse('5 days ago', '{{date}}');
 ns.parse('I left him 5 days ago', 'I left him {{date}}'); // you can also mix with simple words
 // return true
 
-ns.parse('today', '{{date|var1}}');
-ns.parse('I left him 5 days ago', 'I left him {{date|var1}}');
+ns.parse('today', '{{dat:var1}}');
+ns.parse('I left him 5 days ago', 'I left him {{date:var1}}');
 // return { var1: { text:'<real information parsed>', ref:'<interpretated information parsed>', ... } }
 // look chrono-node documentation for more details on the returned object
 ```
@@ -110,13 +110,13 @@ ns.parse('in Paris', '{{capital_city}}'); // it also catch prepositions about
 ns.parse('What time is it in London ?', 'what time is it in {{capital_city}}');
 // return true
 
-ns.parse('Where is my home ?', 'where is my {{capital_city|city}}'); // home is not a city
+ns.parse('Where is my home ?', 'where is my {{capital_city:city}}'); // home is not a city
 // return false
 
-ns.parse('What time is it in London ?', 'what time is it in {{capital_city|city}}');
+ns.parse('What time is it in London ?', 'what time is it in {{capital_city:city}}');
 // returns { city: { text: 'London' } }
 
-ns.parse('What time is it in London ?', 'what time is it {{capital_city|city}}');
+ns.parse('What time is it in London ?', 'what time is it {{capital_city:city}}');
 // returns { city: { text: 'London', preposition: 'in' } }
 
 ```
