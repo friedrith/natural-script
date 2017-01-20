@@ -17,12 +17,13 @@ my appointment is planned for {{date:date1}}
 
 ## Getting started
 
+For now, this project is only available for node.js because of [natural](https://github.com/NaturalNode/natural).
+
 ```bash
-npm install natural-script
+$ npm install natural-script
 ```
 
 ```javascript
-
 const ns = require('natural-script');
 
 // ns.parse(<user input>, <pattern to match>)
