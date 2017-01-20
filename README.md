@@ -46,7 +46,7 @@ ns.parse('What time is it in London ?', 'what time is it in {{capital_city:var1}
 
 ### Simple words
 
-Firstly, you can detect simple words. In order to make detection more robust, the module [natural](https://github.com/NaturalNode/natural) is used to detect the words, authorize a small difference between the detected word and the expected word (agains typing errors) and remove ponctuation.
+Firstly, you can detect simple words. In order to make detection more robust, the module [natural](https://github.com/NaturalNode/natural) is used to detect the words, authorize a small difference between the detected word and the expected word (againts typing errors) and remove ponctuation.
 
 ```javascript
 ns.parse('hello', 'hello'); // exactly same words
@@ -76,7 +76,7 @@ ns.parse('<user input>', '{{<information type>}}');
 
 You can also ask to store the information in a variable
 ```javascript
-ns.parse('<user input>', '{{<information type>|variableName}}');
+ns.parse('<user input>', '{{<information type>:variableName}}');
 // return {variableName:<object>} if the user input is of the requested type.
 // The object format depends of the information type.
 // return false else
