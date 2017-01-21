@@ -19,7 +19,7 @@ A demo is available at url [ns.techmind.io](http://ns.techmind.io/).
 
 ## Getting started
 
-For now, this project is only available for node.js because of [natural](https://github.com/NaturalNode/natural).
+For now, this project is only available for node.js because it uses [natural](https://github.com/NaturalNode/natural).
 
 ```bash
 $ npm install natural-script
