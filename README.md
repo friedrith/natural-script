@@ -13,7 +13,7 @@ what time is it in {{capital_city}}
 my appointment is planned for {{date:date1}}
 ```
 
-A demo is available [here](http://ns.techmind.io/).
+A demo is available at url [ns.techmind.io](http://ns.techmind.io/).
 
 > Other kind of information will be available soon like cities, countries, etc
 
