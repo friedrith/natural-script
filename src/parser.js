@@ -45,7 +45,7 @@ function parse(sentence, expression) {
 
 function parseAux(sentence, expression) {
     // console.log('parse', '"'+sentence+'"', '"'+expression+'"');
-
+    var wordRegex = /^[a-zA-Z0-9]+/;
     var formatRegex = /^(?:\{\{[ ]*([a-z\_]+[ ]*(?:\:[ ]*[a-z\_]+){0,1})[ ]*\}\})/;
     var words = tokenizer.tokenize(sentence);
     if (sentence.match(/^[ ]+/)) {
@@ -68,10 +68,10 @@ function parseAux(sentence, expression) {
         } else {
             return false;
         }
-    } else if (expression.match(/^[a-z]+/)) {
+    } else if (expression.match(wordRegex)) {
         // console.log('simple word found');
         // simple word found
-        var expectedWord = expression.match(/^[a-z]+/)[0];
+        var expectedWord = expression.match(wordRegex)[0];
         var realWord = words[0];
         var distance = natural.JaroWinklerDistance(realWord, expectedWord);
         // console.log(distance);
