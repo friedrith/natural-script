@@ -29,7 +29,8 @@ function concat(block1, block2) {
 
 var format = {
     date: require('./formats/date'),
-    capital_city: require('./formats/capital-city')
+    capital_city: require('./formats/capital-city'),
+    color: require('./formats/color')
 };
 
 function parse(sentence, expression) {

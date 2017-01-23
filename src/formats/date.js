@@ -4,7 +4,7 @@ module.exports = function (sentence, varName) {
     var results = chrono.parse(sentence);
     // console.log(results);
     if (results.length > 0) {
-        if (sentence.indexOf(results[0].text) == 0) {
+        if (sentence.startsWith(results[0].text)) {
 
             var result = {
                 left: sentence.replace(results[0].text, ''),

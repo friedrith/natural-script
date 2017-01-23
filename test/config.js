@@ -15,3 +15,10 @@ module.exports.cities = [
     'Bandar Seri Begawan',
     'Edinburgh of the Seven Seas'
 ];
+
+module.exports.colors = [
+    'Blue',
+    'Yellow',
+    'Blue-violet',
+    'Chartreuse Green'
+];

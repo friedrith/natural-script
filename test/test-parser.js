@@ -2,7 +2,7 @@ const chai = require('chai');
 const should = chai.should;
 const expect = chai.expect;
 
-const {dates, cities} = require('./config');
+const {dates, cities, colors} = require('./config');
 
 const ns = require('../src/parser');
 // ns.parse('wake me up at 3pm everyday', 'wake me up [date:date1]')
@@ -90,6 +90,33 @@ describe('parse', function () {
                 it('"'+s+'" -> "'+ref+'" should return true', function () {
                     // console.log(ns.parse(s, ref));
                     expect(ns.parse(s, ref)).to.be.true;
+                });
+            });
+        });
+    });
+
+    describe('2 words + color', function () {
+
+        colors.forEach(function (color) {
+            var s = 'testaaa testbbbb '+color;
+            var ref = 'testaaa testbbbb {{color}}';
+            it('"'+s+'" -> "'+ref+'" should return true', function () {
+                // console.log(ns.parse(s, ref));
+                expect(ns.parse(s, ref)).to.be.true;
+            });
+        });
+    });
+
+    describe('2 words + date + city + color' , function () {
+        dates.forEach(function (date) {
+            cities.forEach(function (city) {
+                colors.forEach(function (color) {
+                    var s = 'testaaa testbbbb '+date+' '+city+' '+color;
+                    var ref = 'testaaa testbbbb {{date}} {{capital_city}} {{color}}';
+                    it('"'+s+'" -> "'+ref+'" should return true', function () {
+                        // console.log(ns.parse(s, ref));
+                        expect(ns.parse(s, ref)).to.be.true;
+                    });
                 });
             });
         });

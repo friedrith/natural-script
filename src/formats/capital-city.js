@@ -1,10 +1,14 @@
 var cities = [];
 
-const prepositionParser = require('../preposition');
+// const prepositionParser = require('../preposition');
 
-function lowercaseFirstLetter(string) {
-    return string.charAt(0).toLowerCase() + string.slice(1);
-}
+const modifierParser = require('../modifier');
+
+// function lowercaseFirstLetter(string) {
+//     return string.charAt(0).toLowerCase() + string.slice(1);
+// }
+
+var prepositions = [ 'to', 'in', 'from', 'into', 'at' ];
 
 module.exports = function (sentence, varName) {
     if (!sentence || typeof sentence !== 'string') {
@@ -12,7 +16,7 @@ module.exports = function (sentence, varName) {
     }
 
     // console.log(sentence);
-    var prep = prepositionParser(sentence);
+    var prep = modifierParser(sentence, prepositions);
     if (prep) {
         sentence = prep.left;
     }
@@ -29,7 +33,7 @@ module.exports = function (sentence, varName) {
             if (varName) {
                 result.vars[varName] = {text: cities[i]};
                 if (prep) {
-                    result.vars[varName].preposition = prep.preposition;
+                    result.vars[varName].preposition = prep.modifier;
                 }
             }
             // console.log(result);

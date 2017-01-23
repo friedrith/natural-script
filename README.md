@@ -127,8 +127,7 @@ ns.parse('What time is it in London ?', 'what time is it {{capital_city:city}}')
 
 ```
 
-The list of available cities is [here](src/formats/capital-city.js) and the list
-of managed prepositions is [here](src/prepositions.js).
+The list of available cities and managed prepositions are [here](src/formats/capital-city.js).
 
 
 #### Customized information type
