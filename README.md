@@ -85,52 +85,13 @@ ns.parse('<user input>', '{{<information type>:variableName}}');
 // return false else
 ```
 
-#### Date
+The available kind of information are:
 
-The first kind of information you can extract is **date**.
-```javascript
-ns.parse('today', '{{date}}');
-ns.parse('5 days ago', '{{date}}');
-ns.parse('I left him 5 days ago', 'I left him {{date}}'); // you can also mix with simple words
-// return true
+* [date](doc/date.md)
+* [capital_city](doc/city.md)
+* [color](doc/color.md)
 
-ns.parse('today', '{{dat:var1}}');
-ns.parse('I left him 5 days ago', 'I left him {{date:var1}}');
-// return { var1: { text:'<real information parsed>', ref:'<interpretated information parsed>', ... } }
-// look chrono-node documentation for more details on the returned object
-```
-
-It uses the module [chrono-node](https://github.com/wanasit/chrono) to parse the date.
-See the [documentation](http://wanasit.github.io/pages/chrono/) to discover all date and time formats managed.
-
-
-#### Capital city
-
-You can also extract city names.
-
-```javascript
-ns.parse('Paris', '{{capital_city}}');
-ns.parse('paris', '{{capital_city}}'); // lowercase also works
-ns.parse('in Paris', '{{capital_city}}'); // it also catch prepositions about
-                                          // locations like to, in, from, etc
-ns.parse('What time is it in London ?', 'what time is it in {{capital_city}}');
-// return true
-
-ns.parse('Where is my home ?', 'where is my {{capital_city:city}}'); // home is not a city
-// return false
-
-ns.parse('What time is it in London ?', 'what time is it in {{capital_city:city}}');
-// returns { city: { text: 'London' } }
-
-ns.parse('What time is it in London ?', 'what time is it {{capital_city:city}}');
-// returns { city: { text: 'London', preposition: 'in' } }
-
-```
-
-The list of available cities and managed prepositions are [here](src/formats/capital-city.js).
-
-
-#### Customized information type
+### Customized information type
 
 You can add new kind of information yourself by adding a new format parser like this:
 
@@ -151,4 +112,10 @@ ns.format.date = function (sentence, varName /* optionnal */) {
 
 ```
 
-> Do not hesitate to propose new customized parsers
+## Contribution
+
+This project is only at the beginning so do not hesitate to contribute or propose improvements.
+
+## License
+
+This project is distributed on MIT license.
