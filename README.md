@@ -4,7 +4,7 @@
 
 When you write a bot (slack bot, messenger bot, etc) you have to parse user inputs, classify it and extract information you need. It is easy to classify simple user sentences like *hello*, *How are you?*, *What time is it in London ?*. But it is quite harder when you want to extract complex information. Try for example to parse the date from the expression *my appointment is planned for tomorrow at 2pm at home*.
 
-With **natural-script**, describe the request you want with english words and the type of information you want to extract. These are some examples of **natural-script** language :
+With **natural-script**, describe the request you want with english words and the kind of information you want to extract. These are some examples of **natural-script** language :
 
 ```javascript
 hello
