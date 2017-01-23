@@ -1,3 +1,7 @@
 language: node_js
 node_js:
   - "6"
+notifications:
+  email: false
+    on_failure: always
+    on_success: never
