@@ -15,7 +15,7 @@ my appointment is planned for {{date:date1}}
 
 A demo is available at url [ns.techmind.io](http://ns.techmind.io/).
 
-> Other kind of information will be available soon like cities, countries, etc
+> Other kind of information will be available soon like countries, occurences, etc.
 
 ## Getting started
 
@@ -65,7 +65,7 @@ ns.parse('Bonjour', 'hello'); // too much difference
 ns.parse('hello world', 'hello'); // not exact words count
 // returns false
 ```
-> The function used to evaluate the distance between the real word and the expect word is JaroWinklerDistance from [natural](https://github.com/NaturalNode/natural) module. You can change the maximum authorized distance with `ns.MAX_DISTANCE = <new distance>`
+> The function used to evaluate the distance between the real word and the expected word is JaroWinklerDistance from [natural](https://github.com/NaturalNode/natural) module. You can change the maximum authorized distance with `ns.MAX_DISTANCE = <new distance>`
 
 ### Specific information
 
@@ -104,10 +104,10 @@ ns.format.date = function (sentence, varName /* optionnal */) {
     return false;
 
     // if the sentence contains a date in first position but varName is not present
-    return true;
+    return { left: <sentence without date> };
 
     // if the sentence contains a date in first position and varName is present
-    return { left: <left sentence>, vars: { <varName>: <object containing the date> }};
+    return { left: <sentence without date>, vars: { <varName>: <object containing the date> }};
 }
 
 ```
