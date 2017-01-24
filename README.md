@@ -15,7 +15,7 @@ my appointment is planned for {{date:date1}}
 
 A demo is available at url [ns.techmind.io](http://ns.techmind.io/).
 
-> Other kind of information will be available soon like countries, occurences, etc.
+> Other category will be available soon like countries, occurences, etc.
 
 ## Getting started
 
