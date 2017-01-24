@@ -13,19 +13,19 @@ ns.parse('My shirt is blue', 'My shirt is {{color}}');
 ns.parse('My shirt is dirty', 'my shirt is {{color}}'); // dirty is not a color
 // return false
 
-ns.parse('My shirt is blue', 'my shirt is {{color:color}}');
+ns.parse('My shirt is blue', 'my shirt is {{color:color1}}');
 // returns {
-//            color: {
+//            color1: {
 //               name: 'blue',
 //               hex: '0000FF',
 //               rgb: { red: '0', green: '0', blue: '255' }
 //            }
 //         }
 
-ns.parse('My shirt is dark blue', 'my shirt is {{color:color}}');
+ns.parse('My shirt is dark blue', 'my shirt is {{color:color1}}');
 // dark blue is blue with a modifier
 // returns {
-//            color: {
+//            color1: {
 //               name: 'blue',
 //               hex: '0000FF',
 //               rgb: { red: '0', green: '0', blue: '255' },
