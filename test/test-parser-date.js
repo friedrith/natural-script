@@ -8,20 +8,20 @@ const ns = require('../src/parser');
 
 
 
-describe('format parsers', function () {
+describe('categories parsers', function () {
     describe('date', function () {
         it ('date is function', function () {
-            expect(ns.format.date).to.be.not.null;
-            expect(ns.format.date).to.be.a('function');
+            expect(ns.categories.date).to.be.not.null;
+            expect(ns.categories.date).to.be.a('function');
         });
 
         describe('date absent', function () {
             it ('no string should return false', function () {
-                expect(ns.format.date()).to.be.false;
+                expect(ns.categories.date()).to.be.false;
             });
 
             it ('null should return false', function () {
-                expect(ns.format.date(null)).to.be.false;
+                expect(ns.categories.date(null)).to.be.false;
             });
 
             [
@@ -30,7 +30,7 @@ describe('format parsers', function () {
                 'star wars'
             ].forEach(function (s) {
                 it('"'+s+'" should return false', function () {
-                    expect(ns.format.date(s)).to.be.false;
+                    expect(ns.categories.date(s)).to.be.false;
                 });
             });
         });
@@ -38,7 +38,7 @@ describe('format parsers', function () {
         describe('date not first', function () {
             dates.forEach(function (s) {
                 it ('"to '+s+'" should return false', function () {
-                    expect(ns.format.date('to '+s)).to.be.false;
+                    expect(ns.categories.date('to '+s)).to.be.false;
                 });
             });
         });
@@ -46,7 +46,7 @@ describe('format parsers', function () {
         describe('date only without variable', function () {
             dates.forEach(function (s) {
                 it ('"'+s+'" should return an simple object', function () {
-                    var object = ns.format.date(s);
+                    var object = ns.categories.date(s);
                     expect(object).to.be.an('object');
                     expect(object.left).to.be.an('string');
                     expect(object.left).to.be.empty;
@@ -57,7 +57,7 @@ describe('format parsers', function () {
         describe('date only with variable', function () {
             dates.forEach(function (s) {
                 it ('"'+s+'" should return an object with variables', function () {
-                    var object = ns.format.date(s, 'date1');
+                    var object = ns.categories.date(s, 'date1');
                     expect(object).to.be.an('object');
                     expect(object.left).to.be.an('string');
                     expect(object.left).to.be.empty;
@@ -71,7 +71,7 @@ describe('format parsers', function () {
         describe('date first without variable', function () {
             dates.forEach(function (s) {
                 it ('"'+s+' todo" should return an simple object', function () {
-                    var object = ns.format.date(s+' todo');
+                    var object = ns.categories.date(s+' todo');
                     expect(object).to.be.an('object');
                     expect(object.left).to.be.an('string');
                     expect(object.left).to.be.equal(' todo');
@@ -82,7 +82,7 @@ describe('format parsers', function () {
         describe('date first with variable', function () {
             dates.forEach(function (s) {
                 it ('"'+s+' todo" should return an object with variables', function () {
-                    var object = ns.format.date(s+' todo', 'date1');
+                    var object = ns.categories.date(s+' todo', 'date1');
                     expect(object).to.be.an('object');
                     expect(object.left).to.be.an('string');
                     expect(object.left).to.be.equal(' todo');

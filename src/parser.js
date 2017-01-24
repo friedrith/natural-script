@@ -27,10 +27,10 @@ function concat(block1, block2) {
     }
 }
 
-var format = {
-    date: require('./formats/date'),
-    capital_city: require('./formats/capital-city'),
-    color: require('./formats/color')
+var categories = {
+    date: require('./categories/date'),
+    capital_city: require('./categories/capital-city'),
+    color: require('./categories/color')
 };
 
 function parse(sentence, expression) {
@@ -83,20 +83,20 @@ function parseAux(sentence, expression) {
         }
     } else if (expression.match(formatRegex)) {
         // console.log(expression.match(formatRegex));
-        var currentFormat = expression.match(formatRegex)[1];
-        var varType = '';
+        var currentCategory = expression.match(formatRegex)[1];
+        var varCat = '';
         var varName = null;
-        if (currentFormat.match(/[a-z\_]+\:[a-z\_]+/)) {
-            var split = currentFormat.replace(' ', '').split(':');
-            varType = split[0];
+        if (currentCategory.match(/[a-z\_]+\:[a-z\_]+/)) {
+            var split = currentCategory.replace(' ', '').split(':');
+            varCat = split[0];
             varName = split[1];
         } else {
-            varType = currentFormat;
+            varCat = currentCategory;
         }
 
         // console.log(varType);
-        if (format[varType]) {
-            var partialResult = format[varType](sentence, varName);
+        if (categories[varCat]) {
+            var partialResult = categories[varCat](sentence, varName);
             // console.log(partialResult);
             if (partialResult) {
                 var newSentence = partialResult.left;
@@ -107,11 +107,14 @@ function parseAux(sentence, expression) {
                 return false;
             }
         } else {
-            throw 'format "'+varType+'" is not managed';
+            throw 'category "'+varCat+'" is not managed';
         }
 
     }
 }
 
-module.exports.parse = parse;
-module.exports.format = format;
+function addCategory (name, parser) {
+    categories[name] = parser;
+}
+
+module.exports = { categories, addCategory, parse };

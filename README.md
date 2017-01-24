@@ -4,7 +4,7 @@
 
 When you write a bot (slack bot, messenger bot, etc) you have to parse user inputs, classify it and extract information you need. It is easy to classify simple user sentences like *hello*, *How are you?*, *What time is it in London ?*. But it is quite harder when you want to extract complex information. Try for example to parse the date from the expression *my appointment is planned for tomorrow at 2pm at home*.
 
-With **natural-script**, describe the request you want with english words and the kind of information you want to extract. These are some examples of **natural-script** language :
+With **natural-script**, describe the request you want with english words and the categories of information you want to extract. These are some examples of **natural-script** language :
 
 ```javascript
 hello
@@ -67,36 +67,37 @@ ns.parse('hello world', 'hello'); // not exact words count
 ```
 > The function used to evaluate the distance between the real word and the expected word is JaroWinklerDistance from [natural](https://github.com/NaturalNode/natural) module. You can change the maximum authorized distance with `ns.MAX_DISTANCE = <new distance>`
 
-### Specific information
+### Categories
 
 Then, you can ask to parse specific information even if the formats are very particular.
 
 ```javascript
-ns.parse('<user input>', '{{<information type>}}');
+ns.parse('<user input>', '{{<category>}}');
 // return true if the user input is of the requested type.
 // return false else
 ```
 
 You can also ask to store the information in a variable
 ```javascript
-ns.parse('<user input>', '{{<information type>:variableName}}');
+ns.parse('<user input>', '{{<category>:variableName}}');
 // return {variableName:<object>} if the user input is of the requested type.
-// The object format depends of the information type.
+// The object format depends of the category.
 // return false else
 ```
 
-The available kind of information are:
+The available categories are:
 
 * [date](doc/date.md)
 * [capital_city](doc/city.md)
 * [color](doc/color.md)
 
-### Customized information type
+### Customized category
 
-You can add new kind of information yourself by adding a new format parser like this:
+You can add new category yourself by adding a new format parser like this:
 
 ```javascript
-ns.format.date = function (sentence, varName /* optionnal */) {
+
+ns.addCategory('date', function (sentence, varName /* optionnal */) {
     // if sentence doesn't contain a date
     return false;
 
@@ -109,7 +110,6 @@ ns.format.date = function (sentence, varName /* optionnal */) {
     // if the sentence contains a date in first position and varName is present
     return { left: <sentence without date>, vars: { <varName>: <object containing the date> }};
 }
-
 ```
 
 ## Contribution
