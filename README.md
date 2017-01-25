@@ -90,7 +90,7 @@ The available categories are:
 * [date](doc/categories/date.md)
 * [capital_city](doc/categories/city.md)
 * [color](doc/categories/color.md)
-* [occurence](doc/categories/occurence.md)
+* [occurence](doc/categories/occurrence.md)
 
 > You can also add your own category. See the [documentation](doc/customize-category.md)
 
