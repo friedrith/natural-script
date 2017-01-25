@@ -21,4 +21,15 @@ ns.parse('What time is it in London ?', 'what time is it {{capital_city:city}}')
 
 ```
 
+The returned object is :
+
+```javascript
+
+{
+    text: <string>, // city name
+    [preposition: <string> ] // preposition before the name
+}
+
+```
+
 The list of available cities and managed prepositions are [here](../src/formats/capital-city.js).

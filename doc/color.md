@@ -35,4 +35,21 @@ ns.parse('My shirt is dark blue', 'my shirt is {{color:color1}}');
 
 ```
 
+The returned object is :
+
+```javascript
+
+{
+    name: <string>, // color name
+    hex: <string>, // hexadecimal code
+    rgb: {
+        red: <integer>,
+        green: <integer>,
+        blue: <integer>
+    }
+    [modifier: <string> ] // preposition before the name
+}
+
+```
+
 The list of available colors and modifiers are [here](../src/formats/color.js).

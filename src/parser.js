@@ -30,7 +30,8 @@ function concat(block1, block2) {
 var categories = {
     date: require('./categories/date'),
     capital_city: require('./categories/capital-city'),
-    color: require('./categories/color')
+    color: require('./categories/color'),
+    occurrence: require('./categories/occurrence')
 };
 
 function parse(sentence, expression) {

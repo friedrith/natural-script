@@ -22,3 +22,12 @@ module.exports.colors = [
     'Blue-violet',
     'Chartreuse Green'
 ];
+
+
+module.exports.occurrences = [
+    'every weekday at 12:00 pm',
+    'every 5 mins',
+    'every 20 mins starting on the 7th min',
+    'every 5 mins every weekend',
+    'on the last day of the month'
+];

@@ -39,8 +39,8 @@ ns.parse('Bonjour', 'hello');
 ns.parse('What time is it in London ?', 'what time is it in {{capital_city}}');
 // returns true
 
-ns.parse('What time is it in London ?', 'what time is it in {{capital_city:var1}}');
-// returns { var1: 'London' }
+ns.parse('What will the weather be like tomorrow?', 'what will the weather be like {{date:var1}}');
+// returns { var1: 'tomorrow' }
 
 ```
 

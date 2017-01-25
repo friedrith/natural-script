@@ -2,7 +2,7 @@ const chai = require('chai');
 const should = chai.should;
 const expect = chai.expect;
 
-const {dates, cities, colors} = require('./config');
+const {dates, cities, colors, occurrences} = require('./config');
 
 const ns = require('../src/parser');
 // ns.parse('wake me up at 3pm everyday', 'wake me up [date:date1]')
@@ -107,15 +107,28 @@ describe('parse', function () {
         });
     });
 
-    describe('2 words + date + city + color' , function () {
+    describe('2 words + occurrence', function () {
+        occurrences.forEach(function (occurrence) {
+            var s = 'testaaa testbbbb '+occurrence;
+            var ref = 'testaaa testbbbb {{occurrence}}';
+            it('"'+s+'" -> "'+ref+'" should return true', function () {
+                // console.log(ns.parse(s, ref));
+                expect(ns.parse(s, ref)).to.be.true;
+            });
+        });
+    });
+
+    describe('2 words + date + city + color + occurrence' , function () {
         dates.forEach(function (date) {
             cities.forEach(function (city) {
                 colors.forEach(function (color) {
-                    var s = 'testaaa testbbbb '+date+' '+city+' '+color;
-                    var ref = 'testaaa testbbbb {{date}} {{capital_city}} {{color}}';
-                    it('"'+s+'" -> "'+ref+'" should return true', function () {
-                        // console.log(ns.parse(s, ref));
-                        expect(ns.parse(s, ref)).to.be.true;
+                    occurrences.forEach(function (occurrence) {
+                        var s = 'testaaa testbbbb '+date+' '+city+' '+color+' '+occurrence;
+                        var ref = 'testaaa testbbbb {{date}} {{capital_city}} {{color}} {{occurrence}}';
+                        it('"'+s+'" -> "'+ref+'" should return true', function () {
+                            // console.log(ns.parse(s, ref));
+                            expect(ns.parse(s, ref)).to.be.true;
+                        });
                     });
                 });
             });
