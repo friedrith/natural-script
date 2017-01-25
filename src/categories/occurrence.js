@@ -8,7 +8,7 @@ module.exports = function (sentence, varName) {
         return false;
     }
 
-    var words = sentence.split(' ');
+    var words = sentence.toLowerCase().split(' ');
 
     if (words.length == 0) {
         return false;
@@ -20,10 +20,14 @@ module.exports = function (sentence, varName) {
 
     for (var i = 0 ; i < words.length ; i++) {
 
+        var word = words[i];
+        if (word == 'everyday') {
+            word = 'on sunday, monday, tuesday, wednesday, thursday, friday, saturday';
+        }
         if (leftSentence == '') {
-            leftSentence = words[i];
+            leftSentence = word;
         } else {
-            leftSentence = leftSentence + ' ' + words[i];
+            leftSentence = leftSentence + ' ' + word;
         }
         var result = later.parse.text(leftSentence);
         // console.log(leftSentence, result.error);

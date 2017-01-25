@@ -6,3 +6,4 @@
 * add function `addCategory`
 * add travis test
 * add category color
+* add category occurrence

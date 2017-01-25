@@ -29,5 +29,6 @@ module.exports.occurrences = [
     'every 5 mins',
     'every 20 mins starting on the 7th min',
     'every 5 mins every weekend',
-    'on the last day of the month'
+    'on the last day of the month',
+    'everyday'
 ];
