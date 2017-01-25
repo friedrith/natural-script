@@ -40,7 +40,7 @@ ns.parse('What time is it in London ?', 'what time is it in {{capital_city}}');
 // returns true
 
 ns.parse('What will the weather be like tomorrow?', 'what will the weather be like {{date:var1}}');
-// returns { var1: 'tomorrow' }
+// returns { var1: { text: 'tomorrow', ... } }
 
 ```
 
@@ -87,30 +87,12 @@ ns.parse('<user input>', '{{<category>:variableName}}');
 
 The available categories are:
 
-* [date](doc/date.md)
-* [capital_city](doc/city.md)
-* [color](doc/color.md)
+* [date](doc/categories/date.md)
+* [capital_city](doc/categories/city.md)
+* [color](doc/categories/color.md)
+* [occurence](doc/categories/occurence.md)
 
-### Customized category
-
-You can add new category yourself by adding a new format parser like this:
-
-```javascript
-
-ns.addCategory('date', function (sentence, varName /* optionnal */) {
-    // if sentence doesn't contain a date
-    return false;
-
-    // if the sentence contains a date but not in first position
-    return false;
-
-    // if the sentence contains a date in first position but varName is not present
-    return { left: <sentence without date> };
-
-    // if the sentence contains a date in first position and varName is present
-    return { left: <sentence without date>, vars: { <varName>: <object containing the date> }};
-}
-```
+> You can also add your own category. See the [documentation](doc/customize-category.md)
 
 ## Contribution
 
