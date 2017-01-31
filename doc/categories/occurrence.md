@@ -10,7 +10,7 @@ ns.parse('start the alarm clock at 5:00 pm on Weds,Thurs and Fri', 'start the al
 
 ns.parse('every weekend', '{{occurence:var1}}');
 ns.parse('Let me sleep every weekend', 'Let me sleep {{occurence:var1}}');
-// return { var1: <object> }
+// return { var1: { laterjs :<object> } }
 // look later.js documentation for more details on the returned object
 ```
 See the [later.js documentation](https://github.com/bunkat/later) to discover all occurrences managed.
