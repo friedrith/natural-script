@@ -1,4 +1,4 @@
-# natural-script [![Build Status](https://travis-ci.org/thibaultfriedrich/natural-script.svg?branch=master)](https://travis-ci.org/thibaultfriedrich/natural-script)  [![Dependencies](https://david-dm.org/thibaultfriedrich/natural-script.png?theme=shields.io)](https://david-dm.org/thibaultfriedrich/natural-script) [![devDependency Status](https://david-dm.org/thibaultfriedrich/natural-script/dev-status.svg)](https://david-dm.org/thibaultfriedrich/natural-script#info=devDependencies)
+# natural-script [![Build Status](https://travis-ci.org/thibaultfriedrich/natural-script.svg?branch=master)](https://travis-ci.org/thibaultfriedrich/natural-script)  
 
 **Natural-script** is a script language to easily parse english expressions.
 
