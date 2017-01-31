@@ -1,6 +1,6 @@
 # Change Log
 
-## Version 0.2.1
+## Version 0.3.0
 
 * Rename "type of information" to "category"
 * add function `addCategory`
