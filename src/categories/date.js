@@ -1,10 +1,10 @@
-const chrono = require('chrono-node');
+    const chrono = require('chrono-node');
 
 module.exports = function (sentence, varName) {
     var results = chrono.parse(sentence);
     // console.log(results);
     if (results.length > 0) {
-        if (sentence.startsWith(results[0].text)) {
+        if (results[0].index == 0) {
 
             var result = {
                 left: sentence.replace(results[0].text, ''),

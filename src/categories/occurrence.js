@@ -48,7 +48,7 @@ module.exports = function (sentence, varName) {
         };
 
         if (varName) {
-            result.vars[varName] = { laterjs: previousResult.schedules }
+            result.vars[varName] = { laterjs: previousResult }
         }
 
         return result;
