@@ -32,3 +32,9 @@ module.exports.occurrences = [
     'on the last day of the month',
     'everyday'
 ];
+
+module.exports.integers = [
+    '10',
+    '100',
+    '60'
+];

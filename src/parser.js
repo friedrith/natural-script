@@ -31,7 +31,8 @@ var categories = {
     date: require('./categories/date'),
     capital_city: require('./categories/capital-city'),
     color: require('./categories/color'),
-    occurrence: require('./categories/occurrence')
+    occurrence: require('./categories/occurrence'),
+    integer: require('./categories/integer')
 };
 
 function parse(sentence, expression) {

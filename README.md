@@ -15,7 +15,7 @@ my appointment is planned for {{date:date1}}
 
 A demo is available at url [ns.techmind.io](http://ns.techmind.io/).
 
-> Other category will be available soon like countries, occurences, etc.
+> Other category will be available soon like countries, names etc.
 
 ## Getting started
 
@@ -91,6 +91,7 @@ The available categories are:
 * [capital_city](doc/categories/city.md)
 * [color](doc/categories/color.md)
 * [occurence](doc/categories/occurrence.md)
+* [integer](doc/categories/integer.md)
 
 > You can also add your own category. See the [documentation](doc/customize-category.md)
 

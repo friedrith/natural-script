@@ -2,7 +2,7 @@ const chai = require('chai');
 const should = chai.should;
 const expect = chai.expect;
 
-const {dates, cities, colors, occurrences} = require('./config');
+const {dates, cities, colors, occurrences, integers} = require('./config');
 
 const ns = require('../src/parser');
 // ns.parse('wake me up at 3pm everyday', 'wake me up [date:date1]')
@@ -118,17 +118,31 @@ describe('parse', function () {
         });
     });
 
-    describe('2 words + date + city + color + occurrence' , function () {
+    describe('2 words + integer', function () {
+        integers.forEach(function (integer) {
+            var s = 'testaaa testbbbb '+integer;
+            var ref = 'testaaa testbbbb {{integer}}';
+            it('"'+s+'" -> "'+ref+'" should return true', function () {
+                // console.log(ns.parse(s, ref));
+                expect(ns.parse(s, ref)).to.be.true;
+            });
+        });
+    });
+
+    describe('2 words + date + city + color + occurrence + integer' , function () {
         dates.forEach(function (date) {
             cities.forEach(function (city) {
                 colors.forEach(function (color) {
                     occurrences.forEach(function (occurrence) {
-                        var s = 'testaaa testbbbb '+date+' '+city+' '+color+' '+occurrence;
-                        var ref = 'testaaa testbbbb {{date}} {{capital_city}} {{color}} {{occurrence}}';
-                        it('"'+s+'" -> "'+ref+'" should return true', function () {
-                            // console.log(ns.parse(s, ref));
-                            expect(ns.parse(s, ref)).to.be.true;
+                        integers.forEach(function (integer) {
+                            var s = 'testaaa testbbbb '+date+' '+city+' '+color+' '+occurrence+' '+integer;
+                            var ref = 'testaaa testbbbb {{date}} {{capital_city}} {{color}} {{occurrence}} {{integer}}';
+                            it('"'+s+'" -> "'+ref+'" should return true', function () {
+                                // console.log(ns.parse(s, ref));
+                                expect(ns.parse(s, ref)).to.be.true;
+                            });
                         });
+
                     });
                 });
             });
