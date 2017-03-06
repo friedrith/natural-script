@@ -92,6 +92,7 @@ The available categories are:
 * [color](doc/categories/color.md)
 * [occurence](doc/categories/occurrence.md)
 * [integer](doc/categories/integer.md)
+* [email](doc/categories/email.md)
 
 > You can also add your own category. See the [documentation](doc/customize-category.md)
 

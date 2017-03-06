@@ -33,6 +33,14 @@ module.exports.occurrences = [
     'everyday'
 ];
 
+module.exports.emails = [
+    'tf@elqui.fr',
+    'toto@gmail.com',
+    'titi.toto@hotmail.com',
+    'test-yoyo@yahoo.fr',
+    'test@test-toto.biz'
+];
+
 module.exports.integers = [
     '10',
     '100',

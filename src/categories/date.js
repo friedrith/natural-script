@@ -1,4 +1,4 @@
-    const chrono = require('chrono-node');
+const chrono = require('chrono-node');
 
 module.exports = function (sentence, varName) {
     var results = chrono.parse(sentence);
