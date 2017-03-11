@@ -2,7 +2,7 @@ const chai = require('chai');
 const should = chai.should;
 const expect = chai.expect;
 
-const {dates, cities, colors, occurrences, integers} = require('./config');
+const {dates, cities, colors, occurrences, integers, urls} = require('./config');
 
 const ns = require('../src/parser');
 // ns.parse('wake me up at 3pm everyday', 'wake me up [date:date1]')
@@ -129,20 +129,21 @@ describe('parse', function () {
         });
     });
 
-    describe('2 words + date + city + color + occurrence + integer' , function () {
+    describe('2 words + date + city + color + occurrence + integer + url' , function () {
         dates.forEach(function (date) {
             cities.forEach(function (city) {
                 colors.forEach(function (color) {
                     occurrences.forEach(function (occurrence) {
                         integers.forEach(function (integer) {
-                            var s = 'testaaa testbbbb '+date+' '+city+' '+color+' '+occurrence+' '+integer;
-                            var ref = 'testaaa testbbbb {{date}} {{capital_city}} {{color}} {{occurrence}} {{integer}}';
-                            it('"'+s+'" -> "'+ref+'" should return true', function () {
-                                // console.log(ns.parse(s, ref));
-                                expect(ns.parse(s, ref)).to.be.true;
+                            urls.forEach(function (url) {
+                                var s = 'testaaa testbbbb '+date+' '+city+' '+color+' '+occurrence+' '+integer+' '+url;
+                                var ref = 'testaaa testbbbb {{date}} {{capital_city}} {{color}} {{occurrence}} {{integer}} {{url}}';
+                                it('"'+s+'" -> "'+ref+'" should return true', function () {
+                                    // console.log(ns.parse(s, ref));
+                                    expect(ns.parse(s, ref)).to.be.true;
+                                });
                             });
                         });
-
                     });
                 });
             });

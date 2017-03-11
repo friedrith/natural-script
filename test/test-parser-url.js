@@ -2,25 +2,25 @@ const chai = require('chai');
 const should = chai.should;
 const expect = chai.expect;
 
-const emails = require('./config').emails;
+const urls = require('./config').urls;
 
 const ns = require('../src/parser');
 
 
 describe('categories parsers', function () {
-    describe('email', function () {
-        it ('email is function', function () {
-            expect(ns.categories.email).to.be.not.null;
-            expect(ns.categories.email).to.be.a('function');
+    describe('url', function () {
+        it ('url is function', function () {
+            expect(ns.categories.url).to.be.not.null;
+            expect(ns.categories.url).to.be.a('function');
         });
 
-        describe('email absent', function () {
+        describe('url absent', function () {
             it ('no string should return false', function () {
-                expect(ns.categories.email()).to.be.false;
+                expect(ns.categories.url()).to.be.false;
             });
 
             it ('null should return false', function () {
-                expect(ns.categories.email(null)).to.be.false;
+                expect(ns.categories.url(null)).to.be.false;
             });
 
             [
@@ -29,24 +29,24 @@ describe('categories parsers', function () {
                 'star wars'
             ].forEach(function (s) {
                 it('"'+s+'" should return false', function () {
-                    expect(ns.categories.email(s)).to.be.false;
+                    expect(ns.categories.url(s)).to.be.false;
                 });
             });
         });
 
 
-        describe('email not first', function () {
-            emails.forEach(function (s) {
+        describe('url not first', function () {
+            urls.forEach(function (s) {
                 it ('"todo '+s+'" should return false', function () {
-                    expect(ns.categories.email('todo '+s)).to.be.false;
+                    expect(ns.categories.url('todo '+s)).to.be.false;
                 });
             });
         });
 
-        describe('email only without variable', function () {
-            emails.forEach(function (s) {
+        describe('url only without variable', function () {
+            urls.forEach(function (s) {
                 it ('"'+s+'" should return an simple object', function () {
-                    var object = ns.categories.email(s);
+                    var object = ns.categories.url(s);
                     expect(object).to.be.an('object');
                     expect(object.left).to.be.an('string');
                     expect(object.left).to.be.empty;
@@ -55,24 +55,24 @@ describe('categories parsers', function () {
         });
 
 
-        describe('email only with variable', function () {
-            emails.forEach(function (s) {
+        describe('url only with variable', function () {
+            urls.forEach(function (s) {
                 it ('"'+s+'" should return an object with variables', function () {
-                    var object = ns.categories.email(s, 'email1');
+                    var object = ns.categories.url(s, 'url1');
                     expect(object).to.be.an('object');
                     expect(object.left).to.be.an('string');
                     expect(object.left).to.be.empty;
                     expect(object.vars).to.be.an('object');
-                    expect(object.vars.email1).to.be.an('string');
-                    expect(object.vars.email1).to.be.equal(s);
+                    expect(object.vars.url1).to.be.an('string');
+                    expect(object.vars.url1).to.be.equal(s);
                 });
             });
         });
 
-        describe('email first without variable', function () {
-            emails.forEach(function (s) {
+        describe('url first without variable', function () {
+            urls.forEach(function (s) {
                 it ('"'+s+' todo" should return an simple object', function () {
-                    var object = ns.categories.email(s+' todo');
+                    var object = ns.categories.url(s+' todo');
                     expect(object).to.be.an('object');
                     expect(object.left).to.be.an('string');
                     expect(object.left).to.be.equal('todo');
@@ -80,16 +80,16 @@ describe('categories parsers', function () {
             });
         });
 
-        describe('email first with variable', function () {
-            emails.forEach(function (s) {
+        describe('url first with variable', function () {
+            urls.forEach(function (s) {
                 it ('"'+s+' todo" should return an object with variables', function () {
-                    var object = ns.categories.email(s+' todo', 'email1');
+                    var object = ns.categories.url(s+' todo', 'url1');
                     expect(object).to.be.an('object');
                     expect(object.left).to.be.an('string');
                     expect(object.left).to.be.equal('todo');
                     expect(object.vars).to.be.an('object');
-                    expect(object.vars.email1).to.be.an('string');
-                    expect(object.vars.email1).to.be.equal(s);
+                    expect(object.vars.url1).to.be.an('string');
+                    expect(object.vars.url1).to.be.equal(s);
                 });
             });
         });

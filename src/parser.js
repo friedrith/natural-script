@@ -33,7 +33,8 @@ var categories = {
     color: require('./categories/color'),
     occurrence: require('./categories/occurrence'),
     integer: require('./categories/integer'),
-    email: require('./categories/email')
+    email: require('./categories/email'),
+    url: require('./categories/url')
 };
 
 function parse(sentence, expression) {

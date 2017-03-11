@@ -46,3 +46,10 @@ module.exports.integers = [
     '100',
     '60'
 ];
+
+module.exports.urls = [
+    'https://google.fr',
+    'http://google.fr',
+    'www.google.fr',
+    'google.fr'
+];
