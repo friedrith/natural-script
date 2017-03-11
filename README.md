@@ -93,6 +93,7 @@ The available categories are:
 * [occurence](doc/categories/occurrence.md)
 * [integer](doc/categories/integer.md)
 * [email](doc/categories/email.md)
+* [url](doc/categories/url.md)
 
 > You can also add your own category. See the [documentation](doc/customize-category.md)
 
