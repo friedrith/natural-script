@@ -1,4 +1,4 @@
-# natural-script [![Build Status](https://travis-ci.org/thibaultfriedrich/natural-script.svg?branch=master)](https://travis-ci.org/thibaultfriedrich/natural-script)  
+# natural-script [![Build Status](https://travis-ci.org/friedrith/natural-script.svg?branch=master)](https://travis-ci.org/friedrith/natural-script)  
 
 **Natural-script** is a script language to easily parse english expressions.
 
