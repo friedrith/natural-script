@@ -1,5 +1,7 @@
 import defaultOptions from './default-options'
 import word from './plugins/word'
+import email from './plugins/email'
+import string from './plugins/string'
 
 /*
 const natural = require('natural')
@@ -138,15 +140,19 @@ module.exports = { categories, addCategory, parse }
 
 */
 
-const plugins = [word]
+const plugins = [string, word, email]
+
+const cleanEnglish = english => english.trim().replace(/([,!?]*|\s.|\s.)/g, '')
 
 export const parse = (english, expected, options = defaultOptions) =>
   new Promise(async resolve => {
     let englishLeft = english
     let expectedLeft = expected
 
-    englishLeft = englishLeft.trim().replace(/,.!?/g, '')
+    englishLeft = cleanEnglish(englishLeft)
     expectedLeft = expectedLeft.trim()
+
+    let vars = {}
 
     while (englishLeft.length > 0) {
       let result = false
@@ -154,7 +160,6 @@ export const parse = (english, expected, options = defaultOptions) =>
       let index = 0
       while (!result && index < plugins.length) {
         result = await plugins[index](englishLeft, expectedLeft, options)
-
         index += 1
       }
 
@@ -163,14 +168,25 @@ export const parse = (english, expected, options = defaultOptions) =>
         return
       }
 
-      englishLeft = result.englishLeft
-      expectedLeft = result.expectedLeft
+      vars = {
+        ...vars,
+        ...result.vars,
+      }
 
-      englishLeft = englishLeft.trim().replace(/,.!?/g, '')
-      expectedLeft = expectedLeft.trim()
+      englishLeft = cleanEnglish(result.englishLeft)
+      expectedLeft = result.expectedLeft.trim()
     }
 
-    resolve(true)
+    // if (expectedLeft.length !== englishLeft.length) {
+    //   resolve(false)
+    //   return
+    // }
+
+    if (Object.keys(vars).length > 0) {
+      resolve(vars)
+    } else {
+      resolve(true)
+    }
   })
 
 export default {

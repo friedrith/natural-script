@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "babel src/parser.js --out-dir dist",
-    "test": "jest test/parser-string.test.js",
+    "test": "jest test/**",
     "lint": "eslint '**/*.js'",
     "lint:fix": "eslint --fix **/*.js",
     "format": "prettier --check '**/*.js'",
