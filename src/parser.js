@@ -1,3 +1,7 @@
+import { WordTokenizer, JaroWinklerDistance } from 'natural'
+import defaultOptions from './default-options'
+
+/*
 const natural = require('natural')
 const tokenizer = new natural.WordTokenizer()
 
@@ -131,3 +135,21 @@ function addCategory(name, parser) {
 }
 
 module.exports = { categories, addCategory, parse }
+
+*/
+
+const tokenizer = new WordTokenizer()
+
+export const parse = (english, script, options = defaultOptions) => {
+  const words = tokenizer.tokenize(english)
+
+  const distance = JaroWinklerDistance(english, script)
+
+  console.log('distance', distance)
+
+  return distance > options.maxDistance
+}
+
+export default {
+  parse,
+}

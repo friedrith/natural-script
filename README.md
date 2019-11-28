@@ -25,7 +25,7 @@ $ npm install natural-script
 ```
 
 ```javascript
-const ns = require('natural-script')
+import ns from 'natural-script'
 
 // ns.parse(<user input>, <pattern to match>)
 

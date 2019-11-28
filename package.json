@@ -2,12 +2,13 @@
   "name": "natural-script",
   "version": "0.5.1",
   "description": "Script language to parse english expressions.",
-  "main": "src/parser.js",
+  "main": "dist/parser.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/test-*.js",
+    "build": "babel src/parser.js --out-dir dist",
+    "test": "jest test/parser-string.test.js",
     "lint": "eslint '**/*.js'",
     "lint:fix": "eslint --fix **/*.js",
     "format": "prettier --check '**/*.js'",
@@ -39,7 +40,7 @@
   "dependencies": {
     "chrono-node": "^1.2.5",
     "later": "^1.2.0",
-    "natural": "^0.4.0",
+    "natural": "^0.6.3",
     "rrule": "^2.1.0"
   },
   "devDependencies": {
@@ -53,6 +54,7 @@
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/polyfill": "^7.6.0",
     "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.7.4",
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.0.0",
     "@commitlint/travis-cli": "^8.0.0",
@@ -61,10 +63,10 @@
     "chai": "^3.5.0",
     "eslint": "^5.12.1",
     "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-mocha": "^6.2.2",
+    "eslint-plugin-jest": "^23.0.5",
     "eslint-plugin-node": "^9.1.0",
     "husky": "^3.0.0",
-    "mocha": "^3.2.0",
+    "jest": "^24.9.0",
     "prettier": "1.18.2"
   }
 }
