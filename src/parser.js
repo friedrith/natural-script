@@ -1,5 +1,5 @@
-import { WordTokenizer, JaroWinklerDistance } from 'natural'
 import defaultOptions from './default-options'
+import word from './plugins/word'
 
 /*
 const natural = require('natural')
@@ -138,17 +138,40 @@ module.exports = { categories, addCategory, parse }
 
 */
 
-const tokenizer = new WordTokenizer()
+const plugins = [word]
 
-export const parse = (english, script, options = defaultOptions) => {
-  const words = tokenizer.tokenize(english)
+export const parse = (english, expected, options = defaultOptions) =>
+  new Promise(async resolve => {
+    let englishLeft = english
+    let expectedLeft = expected
 
-  const distance = JaroWinklerDistance(english, script)
+    englishLeft = englishLeft.trim().replace(/,.!?/g, '')
+    expectedLeft = expectedLeft.trim()
 
-  console.log('distance', distance)
+    while (englishLeft.length > 0) {
+      let result = false
 
-  return distance > options.maxDistance
-}
+      let index = 0
+      while (!result && index < plugins.length) {
+        result = await plugins[index](englishLeft, expectedLeft, options)
+
+        index += 1
+      }
+
+      if (!result || englishLeft === result.left) {
+        resolve(false)
+        return
+      }
+
+      englishLeft = result.englishLeft
+      expectedLeft = result.expectedLeft
+
+      englishLeft = englishLeft.trim().replace(/,.!?/g, '')
+      expectedLeft = expectedLeft.trim()
+    }
+
+    resolve(true)
+  })
 
 export default {
   parse,
