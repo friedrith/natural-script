@@ -3,6 +3,7 @@ import word from './plugins/word'
 import email from './plugins/email'
 import string from './plugins/string'
 import url from './plugins/url'
+import regexp from './plugins/regexp'
 
 /*
 const natural = require('natural')
@@ -141,7 +142,7 @@ module.exports = { categories, addCategory, parse }
 
 */
 
-const plugins = [string, word, email, url]
+const plugins = [string, word, email, url, regexp]
 
 const cleanEnglish = english => english.trim().replace(/([,!?]*|\s.|\s.)/g, '')
 
