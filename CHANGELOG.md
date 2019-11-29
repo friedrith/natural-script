@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.3](https://github.com/ThibaultFriedrich/natural-script/compare/v0.5.2...v0.5.3) (2019-11-29)
+
+
+### Bug Fixes
+
+* compilation ([96e57b0](https://github.com/ThibaultFriedrich/natural-script/commit/96e57b0fb867b89ffaaf684429a1c53b343e8c7f))
+
 ### 0.5.2 (2019-11-29)
 
 ### Features
