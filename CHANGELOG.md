@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.5](https://github.com/ThibaultFriedrich/natural-script/compare/v0.5.4...v0.5.5) (2019-11-29)
+
+
+### Bug Fixes
+
+* bug due to regexp ([a1671d0](https://github.com/ThibaultFriedrich/natural-script/commit/a1671d053d02c48aaa113e4890e205ab0ffb2024))
+
 ### [0.5.4](https://github.com/ThibaultFriedrich/natural-script/compare/v0.5.3...v0.5.4) (2019-11-29)
 
 
