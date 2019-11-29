@@ -80,7 +80,7 @@ release a version, he will use commands:
 ```bash
 git pull origin master
 yarn release
-push --follow-tags origin master && npm publish
+git push --follow-tags origin master && npm publish
 ```
 
 > Please do not use these commands if you don't have write capabilities on the repository. We want to
