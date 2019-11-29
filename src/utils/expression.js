@@ -5,7 +5,6 @@ const startWithExpression = (type, expression) => {
 
 const findWordMatching = (word, regex) => {
   const match = word.match(regex)
-
   return match ? match[0] : false
 }
 

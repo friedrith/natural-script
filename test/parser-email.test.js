@@ -16,4 +16,8 @@ describe('Emails', () => {
       foo: 'foo@bar.com',
     })
   })
+
+  it('should return false', async () => {
+    expect(await parse('TOKEN', '{email:foo}')).toEqual(false)
+  })
 })
