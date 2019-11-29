@@ -22,4 +22,16 @@ describe('Urls', () => {
       await parse('www.google.com http://facebook.com', '{url} {url}')
     ).toEqual(true)
   })
+
+  it('should return an object with content detected for two urls', async () => {
+    expect(
+      await parse(
+        'www.google.com http://facebook.com',
+        '{url:google} {url:facebook}'
+      )
+    ).toEqual({
+      google: 'www.google.com',
+      facebook: 'http://facebook.com',
+    })
+  })
 })
