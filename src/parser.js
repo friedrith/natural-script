@@ -4,6 +4,7 @@ import email from './plugins/email'
 import string from './plugins/string'
 import url from './plugins/url'
 import regexp from './plugins/regexp'
+import exact from './plugins/exact'
 
 /*
 const natural = require('natural')
@@ -142,9 +143,10 @@ module.exports = { categories, addCategory, parse }
 
 */
 
-const plugins = [string, word, email, url, regexp]
+const plugins = [string, word, email, url, regexp, exact]
 
 const cleanEnglish = english => english.trim().replace(/([,!?]*|\s.|\s.)/g, '')
+const cleanExpected = expected => expected.trim()
 
 export const parse = (english, expected, options = defaultOptions) =>
   new Promise(async resolve => {
@@ -152,20 +154,17 @@ export const parse = (english, expected, options = defaultOptions) =>
     let expectedLeft = expected
 
     englishLeft = cleanEnglish(englishLeft)
-    expectedLeft = expectedLeft.trim()
+    expectedLeft = cleanExpected(expectedLeft)
 
     let vars = {}
 
     while (englishLeft.length > 0) {
-      let result = false
+      const promises = plugins.map(p => p(englishLeft, expectedLeft, options))
+      const results = await Promise.all(promises)
 
-      let index = 0
-      while (!result && index < plugins.length) {
-        result = await plugins[index](englishLeft, expectedLeft, options)
-        index += 1
-      }
+      const result = results.reduce((acc, result) => acc || result, false)
 
-      if (!result || englishLeft === result.left) {
+      if (!result || englishLeft === result.englishLeft) {
         resolve(false)
         return
       }
@@ -176,13 +175,8 @@ export const parse = (english, expected, options = defaultOptions) =>
       }
 
       englishLeft = cleanEnglish(result.englishLeft)
-      expectedLeft = result.expectedLeft.trim()
+      expectedLeft = cleanExpected(result.expectedLeft)
     }
-
-    // if (expectedLeft.length !== englishLeft.length) {
-    //   resolve(false)
-    //   return
-    // }
 
     if (Object.keys(vars).length > 0) {
       resolve(vars)
