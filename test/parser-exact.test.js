@@ -12,4 +12,8 @@ describe('exact strings', () => {
   it('should return false for exact same words but with uppercase', async () => {
     expect(await parse('Hello', '"hello"')).toEqual(false)
   })
+
+  it('should return true with several exact same words', async () => {
+    expect(await parse('hello word', '"hello" "word"')).toEqual(true)
+  })
 })

@@ -13,7 +13,7 @@ export default (english, expected) => {
   if (english.startsWith(expectedWord)) {
     return {
       englishLeft: english.replace(expectedWord, ''),
-      expectedLeft: expected.replace(expectedWord, ''),
+      expectedLeft: expected.replace(`"${expectedWord}"`, ''),
     }
   }
 
