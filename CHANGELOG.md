@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.6](https://github.com/ThibaultFriedrich/natural-script/compare/v0.5.5...v0.5.6) (2019-12-04)
+
+
+### Features
+
+* able to detect exact same words ([20869cb](https://github.com/ThibaultFriedrich/natural-script/commit/20869cb0303a9476a39e8348214355e856e9e053))
+
 ### [0.5.5](https://github.com/ThibaultFriedrich/natural-script/compare/v0.5.4...v0.5.5) (2019-11-29)
 
 

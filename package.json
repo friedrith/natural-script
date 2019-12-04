@@ -1,6 +1,6 @@
 {
   "name": "natural-script",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "Script language to parse english expressions.",
   "main": "dist/parser.js",
   "directories": {
