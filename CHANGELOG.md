@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.8](https://github.com/ThibaultFriedrich/natural-script/compare/v0.5.7...v0.5.8) (2019-12-05)
+
+
+### Features
+
+* change how to write strict and strings ([08b1ab4](https://github.com/ThibaultFriedrich/natural-script/commit/08b1ab44f4267998f220f1fbb13bfc0619d50745))
+
 ### [0.5.7](https://github.com/ThibaultFriedrich/natural-script/compare/v0.5.6...v0.5.7) (2019-12-04)
 
 
