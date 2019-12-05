@@ -12,7 +12,7 @@ describe('Regexp', () => {
   })
 
   it('should return object when a regex and a word', async () => {
-    expect(await parse('Save foobar!', 'save {.*:foo}')).toEqual({
+    expect(await parse('save foobar!', 'save {.*:foo}')).toEqual({
       foo: 'foobar',
     })
   })

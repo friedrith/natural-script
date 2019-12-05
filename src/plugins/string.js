@@ -3,9 +3,9 @@ import { WordTokenizer, JaroWinklerDistance } from 'natural'
 const tokenizer = new WordTokenizer()
 
 const isWord = script => {
-  const match = script.match(/^[a-zA-Z]+/)
+  const match = script.match(/^~([a-zA-Z]+)/)
 
-  return match ? match[0] : false
+  return match ? match[1] : false
 }
 
 export default (english, expected, options) => {
@@ -25,7 +25,7 @@ export default (english, expected, options) => {
   if (distance > options.maxDistance) {
     return {
       englishLeft: english.replace(english.split(' ')[0], ''),
-      expectedLeft: expected.replace(expectedWord, ''),
+      expectedLeft: expected.replace(`~${expectedWord}`, ''),
       details: { distance },
     }
   }

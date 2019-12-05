@@ -12,7 +12,7 @@ describe('Emails', () => {
   })
 
   it('should return object when an email and a word', async () => {
-    expect(await parse('Save foo@bar.com!', 'save {email:foo}')).toEqual({
+    expect(await parse('save foo@bar.com!', 'save {email:foo}')).toEqual({
       foo: 'foo@bar.com',
     })
   })

@@ -1,7 +1,7 @@
 const isExactWord = script => {
-  const match = script.match(/^"([a-zA-Z]+)"/)
+  const match = script.match(/^[a-zA-Z]+/)
 
-  return match ? match[1] : false
+  return match ? match[0] : false
 }
 
 export default (english, expected) => {
@@ -13,7 +13,7 @@ export default (english, expected) => {
   if (english.startsWith(expectedWord)) {
     return {
       englishLeft: english.replace(expectedWord, ''),
-      expectedLeft: expected.replace(`"${expectedWord}"`, ''),
+      expectedLeft: expected.replace(expectedWord, ''),
     }
   }
 
