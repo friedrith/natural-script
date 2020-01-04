@@ -34,4 +34,14 @@ describe('Urls', () => {
       facebook: 'http://facebook.com',
     })
   })
+
+  it('should return true for one url ', async () => {
+    expect(await parse('go to http://foo.com', 'go to {url}')).toEqual(true)
+  })
+
+  it('should return an url ', async () => {
+    expect(await parse('go to http://foo.com', 'go to {url:bar}')).toEqual({
+      bar: 'http://foo.com',
+    })
+  })
 })

@@ -20,4 +20,8 @@ describe('Simple strings', () => {
   it('should return true for one word with spaces', async () => {
     expect(await parse(' Hello  ', '~hello')).toEqual(true)
   })
+
+  it('should return false for a very different string', async () => {
+    expect(await parse('Bonjour', '~hello')).toEqual(false)
+  })
 })

@@ -5,99 +5,59 @@ It also includes a node.js implementation of a parser.
 
 When you write a bot (slack bot, messenger bot, etc) you have to parse user inputs, classify it and extract information you need. It is easy to classify simple user sentences like _hello_, _How are you?_, _What time is it in London ?_. But it is quite harder when you want to extract complex information. Try for example to parse the date from the expression _my appointment is planned for tomorrow at 2pm at home_.
 
-With **natural-script**, describe the request you want with english words and the categories of information you want to extract. These are some examples of **natural-script** language :
+> You could use Natural Language Processing but sometimes it is a bit overkill.
+
+With **natural-script**, describe the request you expect with a simplified expression based on english words. These are some examples of **natural-script** language :
 
 ```javascript
-hello
+Hello
+~hello
 how are you
-what time is it in {{capital_city}}
-my appointment is planned for {{date:date1}}
+my email is {email}
+my appointment is planned for {date:date1}
 ```
-
-> You could use Natural Language Processing but sometimes it is a bit overkill.
 
 ## Getting started
 
 For now, this project is only available for node.js because it uses [natural](https://github.com/NaturalNode/natural).
 
 ```bash
+# with npm
 $ npm install natural-script
+
+# with yarn
+$ yarn add natural-script
 ```
 
 ```javascript
-import ns from 'natural-script'
+import { parse } from 'natural-script'
+;(async () => {
+  // parse returns a promise
+  // await parse(<user input>, <pattern to match>)
 
-// ns.parse(<user input>, <pattern to match>)
+  // by default parse accepts only strict equal strings
+  ;(await parse('Hello', 'hello')) === false
 
-ns.parse('Hello', 'hello')
-// returns true
+  // ~ accepts similar words
+  ;(await parse('Hello', '~hello')) === true
+  ;(await parse('Hello', '~helo')) === true
+  ;(await parse('Bonjour', '~hello')) === false
 
-ns.parse('Bonjour', 'hello')
-// returns false
+  // detects words and returns them
+  ;(await parse('hello thibault', 'hello {word}')) === true
+  ;(await parse('hello thibault', 'hello {word:name}')) === { name: 'foo' }
 
-ns.parse('What time is it in London ?', 'what time is it in {{capital_city}}')
-// returns true
+  // detects emails and returns them
+  ;(await parse('my email is foo@bar.com', 'my email is {email}')) === true
+  ;(await parse('my email is foo@bar.com', 'my email is {email:foo}')) ===
+    { foo: 'foo@bar.com' }
 
-ns.parse(
-  'What will the weather be like tomorrow?',
-  'what will the weather be like {{date:var1}}'
-)
-// returns { var1: { text: 'tomorrow', ... } }
+  // detects urls and returns them
+  ;(await parse('go to http://foo.com', 'go to {url}')) === true
+  ;(await parse('go to http://foo.com', 'go to {url:bar}')) ===
+    { bar: 'http://foo.com' }
+})()
 ```
-
-## Syntax
-
-### Simple words
-
-Firstly, you can detect simple words. In order to make detection more robust, the module [natural](https://github.com/NaturalNode/natural) is used to detect the words, authorize a small difference between the detected word and the expected word (againts typing errors) and remove ponctuation.
-
-```javascript
-ns.parse('hello', 'hello') // exactly same words
-ns.parse('Hello', 'hello') // no case sensitivity
-ns.parse('Hallo', 'hello') // accepts a little difference
-ns.parse('Hello!', 'hello') // remove ponctuation
-ns.parse(' Hello !', 'hello') // remove useless spaces
-ns.parse('hello world', 'hello world') // exactly 2 same words
-ns.parse('hallo Worldi!', 'hello world') // a lot of difference but still works
-// return true
-
-ns.parse('Bonjour', 'hello') // too much difference
-ns.parse('hello world', 'hello') // not exact words count
-// returns false
-```
-
-> The function used to evaluate the distance between the real word and the expected word is JaroWinklerDistance from [natural](https://github.com/NaturalNode/natural) module. You can change the maximum authorized distance with `ns.MAX_DISTANCE = <new distance>`
-
-### Categories
-
-Then, you can ask to parse specific information even if the formats are very particular.
-
-```javascript
-ns.parse('<user input>', '{{<category>}}')
-// return true if the user input is of the requested type.
-// return false else
-```
-
-You can also ask to store the information in a variable
-
-```javascript
-ns.parse('<user input>', '{{<category>:variableName}}')
-// return {variableName:<object>} if the user input is of the requested type.
-// The object format depends of the category.
-// return false else
-```
-
-The available categories are:
-
-- [date](doc/categories/date.md)
-- [capital_city](doc/categories/city.md)
-- [color](doc/categories/color.md)
-- [occurence](doc/categories/occurrence.md)
-- [integer](doc/categories/integer.md)
-- [email](doc/categories/email.md)
-- [url](doc/categories/url.md)
-
-> You can also add your own category. See the [documentation](doc/customize-category.md)
 
 ## Contribution
 

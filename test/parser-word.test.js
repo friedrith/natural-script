@@ -10,8 +10,8 @@ describe('Word', () => {
   })
 
   it('should return true for one word and a string', async () => {
-    expect(await parse('hello thibault', 'hello {word:foo}')).toEqual({
-      foo: 'thibault',
+    expect(await parse('hello thibault', 'hello {word:name}')).toEqual({
+      name: 'thibault',
     })
   })
 })
