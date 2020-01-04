@@ -1,10 +1,5 @@
 import defaultOptions from './default-options'
-import word from './plugins/word'
-import email from './plugins/email'
-import string from './plugins/string'
-import url from './plugins/url'
-import regexp from './plugins/regexp'
-import exact from './plugins/exact'
+import plugins from './plugins'
 
 /*
 const natural = require('natural')
@@ -142,8 +137,6 @@ function addCategory(name, parser) {
 module.exports = { categories, addCategory, parse }
 
 */
-
-const plugins = [string, word, email, url, regexp, exact]
 
 const cleanEnglish = english => english.trim().replace(/([,!?]*|\s.|\s.)/g, '')
 const cleanExpected = expected => expected.trim()

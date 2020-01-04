@@ -1,9 +1,9 @@
 export const Accept = {
-  sctrict: 'scrsctrictipt',
+  strict: 'strict',
 }
 
 export default {
   maxDistance: 0.7,
-  accept: Accept.sctrict,
+  accept: Accept.strict,
   details: false,
 }
