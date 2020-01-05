@@ -5,3 +5,11 @@ notifications:
   email:
     on_failure: always
     on_success: never
+install:
+  - yarn
+script:
+  - yarn commitlint
+  - yarn lint
+  - yarn format
+  - yarn test
+  - yarn build
