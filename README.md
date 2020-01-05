@@ -14,7 +14,7 @@ Hello
 ~hello
 how are you
 my email is {email}
-my appointment is planned for {date:date1}
+go to {url:var1}
 ```
 
 ## Getting started
