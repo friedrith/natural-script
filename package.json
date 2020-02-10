@@ -14,7 +14,8 @@
     "lint:fix": "eslint --fix **/*.js",
     "format": "prettier --check '**/*.js'",
     "format:fix": "prettier --write '**/*.js'",
-    "release": "standard-version"
+    "release": "standard-version",
+    "commitlint": "commitlint --from 35094f2471b03135de035d003557ba9c5848b29e"
   },
   "repository": {
     "type": "git",
