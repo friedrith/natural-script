@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/ThibaultFriedrich/natural-script#readme",
   "dependencies": {
-    "chrono-node": "^1.2.5",
+    "chrono-node": "^2.2.4",
     "later": "^1.2.0",
     "natural": "^0.6.3",
     "rrule": "^2.1.0"
